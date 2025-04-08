@@ -164,8 +164,8 @@ class Utility:
 
         # collect choices of possible javas
         choices = [
-            '/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home/bin/java',
-            '/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/bin/java',
+        #    '/Library/Internet Plug-Ins/JavaAppletPlugin.plugin/Contents/Home/bin/java',
+        #    '/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/bin/java',
         ] # mac hides their java in these places, outside of PATH. Thanks, mac.
         choices += subprocess.Popen(["which","-a","java"],stdout=subprocess.PIPE).stdout.read().decode('utf-8').strip().split("\n") # find the PATH based ones
         verbose_print("find_java: Choices: %s"%choices)
