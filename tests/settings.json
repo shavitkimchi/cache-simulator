@@ -1,11 +1,11 @@
 {
-  "mode": "exe",
+  "mode": "java",
   "penalty_exitcode_nonzero": 0.75,
   "stdin": "/dev/null",
   "output_filters": ["filter_debug_prints"],
   "test_suites": {
     "cachesim": {
-      "penalty_c_math_or_modulo": {"penalty": 0.50, "file": "cachesim.c"},
+      "penalty_java_math_or_modulo": {"penalty": 0.50, "file": "cachesim.java"},
       "tests": [
         { "desc": "beef1.txt     16kB  1way bs=8  ", "args": ["traces/beef1.txt","16","1","8"], "points": 0.6 },
         { "desc": "beef2.txt     16kB  1way bs=8  ", "args": ["traces/beef2.txt","16","1","8"], "points": 0.6 },

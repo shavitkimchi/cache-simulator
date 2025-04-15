@@ -69,4 +69,51 @@ public class cachesim {
         return result;
     }
     // Your code can go here (or anywhere in this class), including a `public static void main` method.
+
+    public static void main(String[] args) {
+        if (args.length != 4) {
+            System.err.println("Usage: java cachesim <tracefile> <cache-size-kB> <num-of-blocks-per-set> <block-size>");
+            System.exit(1);
+        }
+
+        String traceFile = args[0];
+        int cacheSizeKB = Integer.parseInt(args[1]);
+        int numOfBlockPerSet = Integer.parseInt(args[2]); 
+        int blockSize = Integer.parseInt(args[3]);
+
+        traceInit(traceFile); // open the trace file and prepare it for reading
+        
+        cache myCache = new cache(cacheSizeKB, numOfBlockPerSet, blockSize);
+       
+        while (!traceFinished()) {
+            CacheAccess access = traceNextAccess();
+            
+            if (access.isStore) {
+                // Process store operation
+                String result = myCache.store(access.address, access.accessSize, access.data);
+                System.out.println("store 0x" + Integer.toHexString(access.address) + " " + result);
+            } else {
+                // Process load operation
+                String result = myCache.load(access.address, access.accessSize);
+                
+                // Print load address and result
+                System.out.print("load 0x" + Integer.toHexString(access.address) + " " + result);
+                
+                // Print loaded data if appropriate
+                byte[] data = myCache.getLoadedData();
+                if (data != null) {
+                    StringBuilder dataHex = new StringBuilder();
+                    for (int i = 0; i < data.length; i++) {
+                        dataHex.append(String.format("%02x", data[i] & 0xFF));
+                    }
+                    System.out.print(" " + dataHex.toString());
+                }
+                System.out.println();
+            }
+        }
+
+        System.exit(0);
+    }
 }
+
+
