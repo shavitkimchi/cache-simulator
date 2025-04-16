@@ -70,9 +70,10 @@ public class cachesim {
     }
     // Your code can go here (or anywhere in this class), including a `public static void main` method.
 
+    
     public static void main(String[] args) {
         if (args.length != 4) {
-            System.err.println("Usage: java cachesim <tracefile> <cache-size-kB> <num-of-blocks-per-set> <block-size>");
+            System.err.println("Usage: java CacheSim <tracefile> <cache-size-kB> <num-of-blocks-per-set> <block-size>");
             System.exit(1);
         }
 
@@ -99,7 +100,7 @@ public class cachesim {
                 // Print load address and result
                 System.out.print("load 0x" + Integer.toHexString(access.address) + " " + result);
                 
-                // Print loaded data if appropriate
+                // Print loaded data if needed
                 byte[] data = myCache.getLoadedData();
                 if (data != null) {
                     StringBuilder dataHex = new StringBuilder();
@@ -115,5 +116,3 @@ public class cachesim {
         System.exit(0);
     }
 }
-
-

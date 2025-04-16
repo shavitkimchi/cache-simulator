@@ -6,7 +6,6 @@ public class MemoryBlock {
     public MemoryBlock(int blockSize) {
         this.data = new byte[blockSize];
         // If a block has never been written before, then its value in main memory is zero
-    
     }
     
     // Helper method to get specific bytes from this memory block
