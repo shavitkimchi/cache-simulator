@@ -9,3 +9,6 @@ A high-performance Java-based cache simulator built for academic coursework (Duk
 - Implements LRU and FIFO policies
 - Parses memory access traces
 - Outputs detailed hit/miss statistics
+
+## License
+This project is licensed under the Academic Use Only License. Redistribution or commercial use is not permitted.
